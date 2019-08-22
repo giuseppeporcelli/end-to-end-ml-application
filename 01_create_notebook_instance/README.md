@@ -14,16 +14,24 @@ In this section, we will walk you through creating a fully-managed Jupyter Noteb
 In this section, we will create an Amazon S3 bucket that will be our storage area. Amazon SageMaker and AWS Glue can both use **Amazon S3** as the main storage for both data and artifacts.
 
 1. Sign into the **AWS Management Console** at <a href="https://console.aws.amazon.com/">https://console.aws.amazon.com/</a>
-2. In the upper-right corner of the AWS Management Console, confirm you are in the desired AWS region. For the instructions of these workshop we will assume using the **US East (N. Virginia)** [us-east-1], but feel free to change the region at your convenience: the only constraints are that we keep consistent the region settings for all services used and services are available in the selected region (please check).
+
+2. In the upper-right corner of the AWS Management Console, confirm you are in the desired AWS region. For the instructions of these workshop we will assume using the **US East (N. Virginia)** [us-east-1], but feel free to change the region at your convenience.
+
+	> The only constraints for changing AWS region are that we keep consistent the region settings for all services used and services are available in the selected region (please check in case you plan to execute this workshop in another AWS region).
+
 3. Open the **Amazon S3** console at <a href="https://console.aws.amazon.com/s3">https://console.aws.amazon.com/s3</a> or choose the Amazon S3 service in the menu.
-4.	In the Amazon S3 console, click the **Create Bucket** button. ![Amazon S3 create bucket](images/create_bucket.png | width=500)
+4.	In the Amazon S3 console, click the **Create Bucket** button.
+	<img src="images/create_bucket.png" alt="create bucket" width="500px" />
+	
 5.	For the **Bucket Name**, type _endtoendml-workshop-**[your-initials]**_ in the text box and click Next (take note of the bucket name, it will be needed later for loading data in the notebook instance). Press **Next** to move to the next screen.
-Note: if the bucket name is already taken, feel free to add an extra suffix.
 
-	![Amazon S3 create bucket window](images/create_bucket_window_1.png | width=500)
-6. Enable versioning of the objects in the bucket as shown in the screen below. This is not strictly required for the workshop, but it is a suggested best practice to ensure consistency and reproducibility of the experimentations.
+	> **Note:** if the bucket name is already taken, feel free to add an extra suffix.
 
-	![Amazon S3 create bucket window](images/create_bucket_window_2.png | width=500)
+	<img src="images/create_bucket_window_1.png" alt="create bucket window 1" width="500px" />
+	
+6. Enable versioning of the objects in the bucket as shown in the screen below. This is not required for the workshop, but it is a suggested best practice to ensure consistency and reproducibility of the experimentations.
+
+	<img src="images/create_bucket_window_2.png" alt="create bucket window 2" width="500px" />
 
 	Press **Next** and then **Next** again leaving the settings as they are in the following screen.
 7. Finally, click **Create Bucket** in the Review page.
@@ -35,56 +43,80 @@ An **Amazon SageMaker notebook instance** is a fully managed ML compute instance
 
 1. In the AWS Management Console, click on Services, type “SageMaker” and press enter.
 	
-	![Amazon SageMaker](../images/sm_1.png)
-2. You’ll be placed in the Amazon SageMaker dashboard. Click on **Create notebook instance**.
+	<img src="images/search_sagemaker.png" alt="Search SageMaker" width="700px" />
+2. You’ll be placed in the Amazon SageMaker dashboard. Click on **Notebook instances** either in the landing page or in the left menu.
 	
-	![Amazon SageMaker](../images/sm_2.png)
-3. In the **Create notebook instance** screen
+	<img src="images/sagemaker_dashboard.png" alt="SageMaker dashboard" width="700px" />
+	
+3. Once in the Notebook instances screen, click on the top-righ button **Create notebook instance**.
 
-	![Amazon SageMaker](../images/sm_5.png)
+	<img src="images/notebook_instances_screen.png" alt="Notebook Instances screen" width="700px" />
+ 
+4. In the **Create notebook instance** screen
+
+	<img src="images/create_notebook_instance_screen.png" alt="Create Notebook Instance screen" width="700px" />
 
 	1. Give the Notebook Instance a name like _endtoendml-nb-**[your-initials]**_
 
 	2. Choose **ml.t2.medium** as **Notebook instance type**
-	3. Choose **Create a new role** in the **IAM role** dropdown list. Notebook instances require permissions to call other services including Amazon SageMaker, AWS Glue and Amazon S3 APIs. Choose **Specific S3 buckets** in the **Create an IAM role** window and input the name of the bucket that you have created in the previous section. Then click on **Create role**.
+	3. In the **IAM role** dropdown list you need to select an AWS IAM Role that is configured with security policies allowing access to Amazon SageMaker, AWS Glue and Amazon S3. You have two options here:
+
+		3.1. If you are using an AWS Account that has been provided by an AWS instructor, a IAM role might have been previously configured for you. In such case, you just need to select the role from the dropdown (check with AWS instructor). Generally the role will be named like _AmazonSageMaker-ExecutionRole-[some-timestamp]_.
+		
+		3.2. If you are using your own AWS Account choose **Create a new role** in the **IAM role** dropdown list. Then, choose **Specific S3 buckets** in the **Create an IAM role** window and input the name of the bucket that you have created in the previous section. Finally, click on **Create role**.
+
+		> Since this role needs extra policies for additional permissions, we will complete its configuration in the next section.
 	
-		![Amazon SageMaker](../images/sm_3.png)
-		If you already had a role with the proper grants to access the newly created bucket, creating a new role is not mandatory and you can just choose to use the existing role.
+		<img src="images/sagemaker_create_role_window.png" alt="Create IAM Role window" width="600px" />
+
 	4. Keep **No VPC** selected in the **VPC** dropdown list
 	5. Keep **No configuration** selected in the **Lifecycle configuration** dropdown list
 	6. Keep **No Custom Encryption** selected in the **Encryption key** dropdown list
 	7. Finally, click on **Create notebook instance**
 
-4. You will be redirected to the **Notebook instances** screen
-	
-	Wait until the notebook instance is status is **In Service** and then click on the **Open** button to be redirected to Jupyter
-	
-	![Amazon SageMaker](../images/sm_4.png)
-	
-	![Amazon SageMaker](../images/sm_6.png)
+4. You will be redirected to the **Notebook instances** screen and you will see a new notebook instance in _Pending_ state.
 
-## Download notebook and training code to the notebook instance
+	<img src="images/notebook_instances_pending.png" alt="Notebook instances pending" width="700px" />
+	
+	Wait until the notebook instance is status is _In Service_ and then click on the **Open** button to be redirected to Jupyter.
 
-For the purpose of this workshop the code required to build and train the Machine Learning model is pre-implemented and available for download from GitHub.
+	<img src="images/notebook_instances_in_service.png" alt="Notebook instances in service" width="700px" />
+	
+	<img src="images/jupyter_screen.png" alt="Jupyter screen" width="700px" />
 
-As a consequence, in this section we will clone the GitHub repository into the Amazon SageMaker notebook instance and access the Jupyter notebook to run training.
+### Grant additional permissions to the IAM Role
+If in the step 3.2 of the previous section you created a new IAM Role, we have to grant the role additional permissions to access additional AWS services that will be used in this workshop.
+
+More specifically, we will need to grant:
+
+1. ssssa
+2. assaassa
+3. sdsd
+
+sasasasa.
+
+## Download workshop code to the notebook instance
+
+All the code of this workshop is pre-implemented and available for download from GitHub.
+
+As a consequence, in this section we will clone the GitHub repository into the Amazon SageMaker notebook instance and access the Jupyter Notebooks to build our model.
 
 1. Click on **New > Terminal** in the right-hand side of the Jupyter interface
 	
-	![Amazon SageMaker](../images/sm_7.png)
+	<img src="images/jupyter_new_terminal.png" alt="Jupyter New Terminal screen" width="700px" />
 
 	This will open a terminal window in the Jupyter interface
 	
-	![Amazon SageMaker](../images/sm_8.png)
+	<img src="images/jupyter_terminal.png" alt="Jupyter Terminal screen" width="700px" />
 
 2. Execute the following commands in the terminal
 
 	```bash
-	cd SageMaker
-	git clone https://github.com/giuseppeporcelli/smlambdaworkshop
+	cd SageMaker/
+	git clone https://github.com/giuseppeporcelli/end-to-end-ml-application.git
 	```
-3. When the clone operation completes, close the terminal window and return to the Jupyter landing page. The folder **smlambdaworkshop** will appear automatically (if not, you can hit the **Refresh** button)
+3. When the clone operation completes, close the terminal window and return to the Jupyter landing page. The folder **end-to-end-ml-application** will appear automatically (if not, you can hit the **Refresh** button)
 
-	![Amazon SageMaker](../images/sm_9.png)
+	<img src="images/jupyter_cloned_workshop_screen.png" alt="Jupyter Cloned Workshop Screen" width="700px" />
 	
-4. Browse to the folder **smlambdaworkshop > training** and open the file **sms\_spam\_classifier\_mxnet.ipynb**
+4. Browse to the folder **end-to-end-ml-application > 02_xxxx_xxxx** and open the file **xxxxx.ipynb** to start the data exploration and preparation step.
