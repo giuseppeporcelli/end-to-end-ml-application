@@ -61,9 +61,9 @@ An **Amazon SageMaker notebook instance** is a fully managed ML compute instance
 	2. Choose **ml.t2.medium** as **Notebook instance type**
 	3. In the **IAM role** dropdown list you need to select an AWS IAM Role that is configured with security policies allowing access to Amazon SageMaker, AWS Glue and Amazon S3. You have two options here:
 
-		3.1. If you are using an AWS Account that has been provided by an AWS instructor, a IAM role might have been previously configured for you. In such case, you just need to select the role from the dropdown (check with AWS instructor). Generally the role will be named like _AmazonSageMaker-ExecutionRole-[some-timestamp]_.
+		a) If you are using an AWS Account that has been provided by an AWS instructor, a IAM role might have been previously configured for you. In such case, you just need to select the role from the dropdown (check with AWS instructor). Generally the role will be named like _AmazonSageMaker-ExecutionRole-[some-timestamp]_.
 		
-		3.2. If you are using your own AWS Account choose **Create a new role** in the **IAM role** dropdown list. Then, choose **Specific S3 buckets** in the **Create an IAM role** window and input the name of the bucket that you have created in the previous section. Finally, click on **Create role**.
+		b) If you are using your own AWS Account choose **Create a new role** in the **IAM role** dropdown list. Then, choose **Specific S3 buckets** in the **Create an IAM role** window and input the name of the bucket that you have created in the previous section. Finally, click on **Create role**.
 
 		> Since this role needs extra policies for additional permissions, we will complete its configuration in the next section.
 	
@@ -85,7 +85,7 @@ An **Amazon SageMaker notebook instance** is a fully managed ML compute instance
 	<img src="images/jupyter_screen.png" alt="Jupyter screen" width="700px" />
 
 ### Grant additional permissions to the IAM Role
-If in the step 3.2 of the previous section you created a new IAM Role, we have to grant the role additional permissions to access additional AWS services that will be used in this workshop.
+If in the previous section you created a new IAM Role, we have to grant the role additional permissions to access additional AWS services that will be used in this workshop.
 
 More specifically, we will need to grant:
 
