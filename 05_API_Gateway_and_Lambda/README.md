@@ -123,10 +123,31 @@ The additional statements are used to deploy an Amazon API Gateway REST API, whi
 
 For additional information on this way of integrating AWS Lambda and Amazon API Gateway, please visit <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html">**AWS Lambda Proxy Integration**</a>.  
 
-
 ### Test locally
 
-sddsds
+Before deploying our Lambda function, it is a good practice to test it locally in the AWS Cloud9 environment. To accomplish this task:
+
+1. Ensure the _lambda__function.py_ file is opened and is the active tab, then press the **Run** button in the top-central area of the screen as shown in the following screenshot:
+
+	<img src="images/cloud9_run.png" alt="Cloud9 tree" width="700px" />
+
+2. A new tab will appear, where you can type the payload that will be passed to the function and execute it.
+
+	<img src="images/cloud9_run_lambda.png" alt="Cloud9 tree" width="700px" />
+
+3. Input the following payload and press **Run** to test the function locally.
+	
+	```
+	{
+    	"httpMethod": "POST",
+    	"body": "TID008,VAWT,64,80,46.0,21,55,55,7,34,NE"
+	}
+	```
+
+4. You should see some output as shown in the following screenshot:
+
+	<img src="images/cloud9_run_output.png" alt="Cloud9 tree" width="700px" />
+ 
 
 ### Deploy function and API
 
