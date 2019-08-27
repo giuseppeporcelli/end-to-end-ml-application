@@ -160,6 +160,20 @@ Now we are ready to deploy our AWS Lambda function and Amazon API Gateway API. P
 	<img src="images/cloud9_deploy.png" alt="Cloud9 deploy" width="700px" />
 4. After a while, the deploy completes and you should not see any error message.
 
+### Verify API Gateway deployment
+
+After our Lambda function and API have been deployed from Cloud9, we can verify the API Gateway deployment in order to get the address of our REST endpoint.
+
+1. Go back to the **AWS Console** and access **API Gateway** (you can use the top search bar for finding the service).
+2. In the dashboard, click on the widget **cloud9-endtoendmlapplication**. A screen showing the API resources and the defined HTTP methods will appear, similar to the one shown below:
+
+	<img src="images/api_gateway_resources.png" alt="API Gateway Resources" width="700px" />
+
+3. Click on **Stages** in the left tree menu and then on the **Prod** stage. Copy/take note of the **Invoke URL** that will be used by the client application as API endpoint.
+
+	<img src="images/api_gateway_stages.png" alt="API Gateway Stages" width="700px" />
+4. At your convenience, you can also browse through the different settings that can be specified for the stage, like log and tracing, throttling, caching, etc.
+
 ## Invoke the API from a client application
 
 bla bla bla
