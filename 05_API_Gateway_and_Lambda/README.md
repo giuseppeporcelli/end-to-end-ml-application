@@ -151,9 +151,16 @@ Before deploying our Lambda function, it is a good practice to test it locally i
 
 ### Deploy function and API
 
-sddsds
+Now we are ready to deploy our AWS Lambda function and Amazon API Gateway API. Please execute the following actions:
+
+1. In the right-side panel make sure **AWS Resources** is selected.
+2. Then, in the panel tree browser select the package **endtoendmlapplication**.
+3. Press in sequence the **Refresh functions list** and then the **Deploy the selected Lambda function** buttons as shown in the following screenshot:
+
+	<img src="images/cloud9_deploy.png" alt="Cloud9 deploy" width="700px" />
+4. After a while, the deploy completes and you should not see any error message.
 
 ## Invoke the API from a client application
 
-sddsds
+bla bla bla
 
