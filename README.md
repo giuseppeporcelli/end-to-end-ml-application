@@ -30,7 +30,7 @@ Bla bla bla
 
 ## Modules
 
-This workshops consists of five modules:
+This workshops consists of six modules:
 
 - <a href="01_create_notebook_instance/">**Module 01**</a> - Creating an Amazon SageMaker managed Jupyter notebook instance and an Amazon S3 bucket that will be used for storing data, models and code. 
 - <a href="02_data_exploration_and_feature_eng/">**Module 02**</a> - Using AWS Glue and Amazon Athena to execute data preparation and data exploration, and then feature engineering using SparkML.
@@ -45,7 +45,7 @@ You must comply with the order of modules, since the outputs of a module are inp
 
 This workshop has been designed assuming that each participant is using an AWS account that has been provided and pre-configured by the workshop instructor(s). However, you can also choose to use your own AWS account, but you'll have to execute some preliminary configuration steps as described <a href="setup/">here</a>.
 
-Once you are ready to go, please start with <a href="01_create_notebook_instance/">module 01</a>.
+Once you are ready to go, please start with <a href="01_create_notebook_instance/">**Module 01**</a>.
 
 ## License
 

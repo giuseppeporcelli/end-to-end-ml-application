@@ -173,8 +173,3 @@ After our Lambda function and API have been deployed from Cloud9, we can verify 
 
 	<img src="images/api_gateway_stages.png" alt="API Gateway Stages" width="700px" />
 4. At your convenience, you can also browse through the different settings that can be specified for the stage, like log and tracing, throttling, caching, etc.
-
-## Invoke the API from a client application
-
-bla bla bla
-
