@@ -30,7 +30,16 @@ Bla bla bla
 
 ## Modules
 
-Bla bla bla
+This workshops consists of five modules:
+
+- <a href="01_create_notebook_instance/">**Module 01**</a> - Creating an Amazon SageMaker managed Jupyter notebook instance and an Amazon S3 bucket that will be used for storing data, models and code. 
+- <a href="02_data_exploration_and_feature_eng/">**Module 02**</a> - Using AWS Glue and Amazon Athena to execute data preparation and data exploration, and then feature engineering using SparkML.
+- <a href="03_train_model/">**Module 03**</a> - Training a binary classification model using Amazon SageMaker built-in XGBoost algorithm, that will predict whether a wind turbine plant requires maintenance.
+- <a href="04_deploy_model/">**Module 04**</a> - Deploying the feature engineering and ML models as a pipeline using Amazon SageMaker hosting.
+- <a href="05_API_Gateway_and_Lambda/">**Module 05**</a> - Buiding a REST API using Amazon API Gateway and implementing an AWS Lambda function that will invoke the Amazon SageMaker endpoint for inference.
+- <a href="06_invoke_API/">**Module 06**</a> - Using a single-page demo application to invoke the REST API and get inferences.
+
+You must comply with the order of modules, since the outputs of a module are inputs of the following one.
 
 ## Getting started
 
