@@ -60,7 +60,7 @@ import json
 import csv
 import os
 
-ENDPOINT_NAME = 'predmain-sk-ll-endpoint'
+ENDPOINT_NAME = 'pred-main-pipeline-endpoint'
 runtime= boto3.client('runtime.sagemaker')
 
 def build_response(status_code, response_body):
@@ -99,7 +99,7 @@ def lambda_handler(event, context):
 ```
 The implementation is straightforward: the Lambda handler can manage both OPTIONS and POST requests, and when a POST is executed, the Amazon SageMaker endpoint is invoked with the _Body_ parameter set to the request body. Then, the response is returned to the caller.
 
-Please note that the **ENDPOINT_NAME** variable has been set to the name of the endpoint that was deployed in the previus module of this workshop.
+> Please note that the **ENDPOINT_NAME** variable has been set to the name of the endpoint that was deployed in the previus module of this workshop. In case you changed the endpoint name for some reason, you will need to update the variable in the code accordingly.
 
 ### Edit _template.yaml_
 The file _template.yaml_ contains a template - defined through the **Serverless Application Model** - to deploy the AWS Lambda function. We are going to add a few instructions to deploy also an Amazon API Gateway API.
