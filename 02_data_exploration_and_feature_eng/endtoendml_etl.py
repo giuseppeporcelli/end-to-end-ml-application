@@ -46,7 +46,7 @@ windturbine_rawdata = glueContext.create_dynamic_frame.from_catalog(
 
 df = windturbine_rawdata.toDF()
 df = df.na.replace('', "HAWT", subset=["turbine_type"])
-df = df.na.fill(37.0, subset=["col4float"])
+df = df.na.fill(37.0, subset=["oil_temperature"])
 
 col0_indexer = StringIndexer(inputCol="turbine_id", outputCol="indexed_turbine_id")
 col1_indexer = StringIndexer(inputCol="turbine_type", outputCol="indexed_turbine_type")
@@ -59,8 +59,7 @@ wind_direction_encoder = OneHotEncoder(inputCol="indexed_wind_direction", output
 
 #col4_imputer = Imputer(inputCols=["col4float"], outputCols=["oil_temp"], strategy="median")
 
-assembler = VectorAssembler(inputCols=['turb_id', 'turb_type', 'wind_speed', 'rpm_blade', 'col4float', 'oil_level','temperature', 
-              'humidity', 'vibrations_frequency', 'pressure', 'wind_dir'], outputCol="features")
+assembler = VectorAssembler(inputCols=['turb_id', 'turb_type', 'wind_speed', 'rpm_blade', 'oil_temperature', 'oil_level','temperature','humidity', 'vibrations_frequency', 'pressure', 'wind_dir'], outputCol="features")
 
 pipeline = Pipeline(stages=[col0_indexer, col1_indexer, col10_indexer, col11_indexer, turbine_id_encoder, turbine_type_encoder, wind_direction_encoder, assembler])
 
@@ -100,5 +99,5 @@ with tarfile.open("/tmp/model-" + timestamp + ".tar.gz", "w:gz") as tar:
 # Upload the model in tar.gz format to S3 so that it can be used with SageMaker for inference later
 s3 = boto3.resource('s3') 
 #file_name = os.path.join(args['bucket'], '/model/', 'model.tar.gz')
-s3.Bucket(args['S3_BUCKET']).upload_file('/tmp/model-' + timestamp + '.tar.gz', 'model/model.tar.gz')
+s3.Bucket(args['S3_BUCKET']).upload_file('/tmp/model-' + timestamp + '.tar.gz', 'output/sparkml/model.tar.gz')
 
