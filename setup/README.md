@@ -2,6 +2,9 @@
 
 > ⚠️ **Warning**: The following steps need to be executed **only** if you are going to use **your own AWS account** for the workshop. Please do not execute any action if an AWS account was provided by an AWS instructor.
 
+## Prerequisites
+If you are going to use your own AWS Account, we assume that you have **administrator privileges** on the account. If this is not the case, please double-check with an AWS instructor before moving to next section.
+
 ## Configure IAM Roles using AWS CloudFormation
 In this section, we will create the AWS IAM (Identity and Access Management) roles that are required to run this workshop. More specifically, we are going to use AWS CloudFormation to create the following roles:
 
@@ -28,6 +31,8 @@ Please execute the following steps:
 	```
 	https://gianpo-public.s3-eu-west-1.amazonaws.com/endtoendml/create_iam_roles.yaml
 	```
+	> **Note**: the URL targets the AWS CloudFormation template which creates the AWS IAM Roles defined above. The template is also available in this GitHub repository for your reference <a href="create_iam_roles.yaml">here</a>.
+	
 	Finally, press the **Next** button at the bottom of the screen.
 	
 	<img src="images/cloudformation_create_stack_screen_1.png" alt="CloudFormation create stack screen 1" width="700px" />
