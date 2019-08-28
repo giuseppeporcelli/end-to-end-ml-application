@@ -59,15 +59,7 @@ An **Amazon SageMaker notebook instance** is a fully managed ML compute instance
 	1. Give the Notebook Instance a name like _endtoendml-nb-**[your-initials]**_
 
 	2. Choose **ml.t2.medium** as **Notebook instance type**
-	3. In the **IAM role** dropdown list you need to select an AWS IAM Role that is configured with security policies allowing access to Amazon SageMaker, AWS Glue and Amazon S3. You have two options here:
-
-		a) If you are using an AWS Account that has been provided by an AWS instructor, a IAM role might have been previously configured for you. In such case, you just need to select the role from the dropdown (check with AWS instructor). Generally the role will be named like _AmazonSageMaker-ExecutionRole-[some-timestamp]_.
-		
-		b) If you are using your own AWS Account choose **Create a new role** in the **IAM role** dropdown list. Then, choose **Specific S3 buckets** in the **Create an IAM role** window and input the name of the bucket that you have created in the previous section. Finally, click on **Create role**.
-
-		> Since this role needs extra policies for additional permissions, we will complete its configuration in the next section.
-	
-		<img src="images/sagemaker_create_role_window.png" alt="Create IAM Role window" width="600px" />
+	3. In the **IAM role** dropdown list you need to select an AWS IAM Role that is configured with security policies allowing access to Amazon SageMaker, AWS Glue and Amazon S3. The role has been pre-configured for you, so you just need to select **_AmazonSageMaker-ExecutionRole-endtoendml_** in the dropdown list.
 
 	4. Keep **No VPC** selected in the **VPC** dropdown list
 	5. Keep **No configuration** selected in the **Lifecycle configuration** dropdown list
@@ -83,17 +75,6 @@ An **Amazon SageMaker notebook instance** is a fully managed ML compute instance
 	<img src="images/notebook_instances_in_service.png" alt="Notebook instances in service" width="700px" />
 	
 	<img src="images/jupyter_screen.png" alt="Jupyter screen" width="700px" />
-
-### Grant additional permissions to the IAM Role
-If in the previous section you created a new IAM Role, we have to grant the role additional permissions to access additional AWS services that will be used in this workshop.
-
-More specifically, we will need to grant:
-
-1. ssssa
-2. assaassa
-3. sdsd
-
-sasasasa.
 
 ## Download workshop code to the notebook instance
 
@@ -119,4 +100,4 @@ As a consequence, in this section we will clone the GitHub repository into the A
 
 	<img src="images/jupyter_cloned_workshop_screen.png" alt="Jupyter Cloned Workshop Screen" width="700px" />
 	
-4. Browse to the folder **end-to-end-ml-application > 02_xxxx_xxxx** and open the file **xxxxx.ipynb** to start the data exploration and preparation step.
+4. Browse to the folder **02\_data\_exploration\_and\_feature\_eng** and open the file **02\_data\_exploration\_and\_feature\_eng.ipynb** to start the data exploration, preparation and feature engineering steps.
