@@ -24,7 +24,6 @@ The final architecture will be:
 
 [insert architecture diagram]
 
-
 ## The Machine Learning task
 
 Bla bla bla
@@ -33,6 +32,17 @@ Bla bla bla
 
 Bla bla bla
 
-## Before you get started
+## Getting started
 
-Bla bla bla
+This workshop has been designed assuming that each participant is using an AWS account that has been provided and pre-configured by the workshop instructor(s). However, you can also choose to use your own AWS account, but you'll have to execute some preliminary configuration steps as described <a href="setup/">here</a>.
+
+Once you are ready to go, please start with <a href="01_create_notebook_instance/">module 01</a>.
+
+## License
+
+The contents of this workshop are licensed under the [Apache 2.0 License](./LICENSE).
+
+## Authors
+
+[Giuseppe Angelo Porcelli](https://it.linkedin.com/in/giuporcelli) - Principal, ML Specialist Solutions Architect - Amazon Web Services EMEA<br />
+[Antonio Duma](https://it.linkedin.com/in/antoniod82) - Solutions Architect - Amazon Web Services EMEA
