@@ -38,9 +38,9 @@ Once the environment is up and running please:
 3. Type **endtoendmllambdafunction** in the function name textbox and **endtoendmlapplication** in the application name textbox and click **Next**.
 4. Select **Python3.6** in runtime. Then chose **enpty-python** and click **Next**.
 5. In Function trigger, leave none and click **Next**.
-6. In the **Create serverless application** window, select _Choose existing role_ in the **Role** dropdown and then choose the IAM role _LambdaInvokeSageMaker_ for the **Existing Role** dropdown. This will allow the function to invoke the Amazon SageMaker endpoint. Then press **Next**.
+6. In the **Create serverless application** window, select _Choose existing role_ from the **Role** dropdown and then choose the IAM role **_LambdaInvokeSageMakerEndpointRole_** from the **Existing Role** dropdown. This will allow the function to invoke the Amazon SageMaker endpoint. Then press **Next**.
 	
-	> The **LambdaInvokeSageMaker** IAM role has been created in advance in your AWS account for the purpose of this workshop.
+	> The **LambdaInvokeSageMakerEndpointRole** IAM role has been created in advance in your AWS account for the purpose of this workshop.
 7. Press **Finish**.
 8. Once clicked on **Finish** you _might_ get a pop up window asking for **Drag & drop files here**, in this case, please ignore it by click on **x** on the top right corner of the popup window.
 
