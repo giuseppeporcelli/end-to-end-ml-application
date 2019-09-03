@@ -51,7 +51,7 @@ df = df.na.fill(37.0, subset=["oil_temperature"])
 col0_indexer = StringIndexer(inputCol="turbine_id", outputCol="indexed_turbine_id")
 col1_indexer = StringIndexer(inputCol="turbine_type", outputCol="indexed_turbine_type")
 col10_indexer = StringIndexer(inputCol="wind_direction", outputCol="indexed_wind_direction")
-col11_indexer = StringIndexer(inputCol="breakdown", outputCol="indexed_breakdown")
+#col11_indexer = StringIndexer(inputCol="breakdown", outputCol="indexed_breakdown")
 
 turbine_id_encoder = OneHotEncoder(inputCol="indexed_turbine_id", outputCol="turb_id").setDropLast(False)
 turbine_type_encoder = OneHotEncoder(inputCol="indexed_turbine_type", outputCol="turb_type").setDropLast(False)
@@ -61,14 +61,18 @@ wind_direction_encoder = OneHotEncoder(inputCol="indexed_wind_direction", output
 
 assembler = VectorAssembler(inputCols=['turb_id', 'turb_type', 'wind_speed', 'rpm_blade', 'oil_temperature', 'oil_level','temperature','humidity', 'vibrations_frequency', 'pressure', 'wind_dir'], outputCol="features")
 
-pipeline = Pipeline(stages=[col0_indexer, col1_indexer, col10_indexer, col11_indexer, turbine_id_encoder, turbine_type_encoder, wind_direction_encoder, assembler])
+#pipeline = Pipeline(stages=[col0_indexer, col1_indexer, col10_indexer, col11_indexer, turbine_id_encoder, turbine_type_encoder, wind_direction_encoder, assembler])
+pipeline = Pipeline(stages=[col0_indexer, col1_indexer, col10_indexer, turbine_id_encoder, turbine_type_encoder, wind_direction_encoder, assembler])
 
 model = pipeline.fit(df)
 df = model.transform(df)
 
+label_indexer = StringIndexer(inputCol="breakdown", outputCol="indexed_breakdown")
+indexed_label_df = label_indexer.fit(df).transform(df)
+
 
 # Split the overall dataset into 80-20 training and validation
-(train_df, validation_df) = df.randomSplit([0.8, 0.2])
+(train_df, validation_df) = indexed_label_df.randomSplit([0.8, 0.2])
     
 # Convert the train dataframe to RDD to save in CSV format and upload to S3
 train_rdd = train_df.rdd.map(lambda x: (x.indexed_breakdown, x.features))
@@ -83,7 +87,8 @@ validation_lines.saveAsTextFile('s3://{0}/data/preprocessed/val'.format(args['S3
 # Serialize and store the model via MLeap
 timestamp = strftime("%Y-%m-%d-%H-%M-%S", gmtime())
 model_filename = '/tmp/model-' + timestamp + '.zip'
-SimpleSparkSerializer().serializeToBundle(model, 'jar:file:' + model_filename, validation_df)
+#SimpleSparkSerializer().serializeToBundle(model, 'jar:file:' + model_filename, validation_df)
+SimpleSparkSerializer().serializeToBundle(model, 'jar:file:' + model_filename, df)
 
 # Unzip the model as SageMaker expects a .tar.gz file but MLeap produces a .zip file
     
