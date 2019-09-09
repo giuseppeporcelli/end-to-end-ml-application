@@ -36,7 +36,7 @@ Once the environment is up and running please:
 	<img src="images/cloud9_new_function.png" alt="Cloud9 New Function" width="700px" />
 
 3. Type **endtoendmllambdafunction** in the function name textbox and **endtoendmlapplication** in the application name textbox and click **Next**.
-4. Select **Python3.6** in runtime. Then chose **enpty-python** and click **Next**.
+4. Select **Python3.6** in runtime. Then chose **empty-python** and click **Next**.
 5. In Function trigger, leave none and click **Next**.
 6. In the **Create serverless application** window, select _Choose existing role_ from the **Role** dropdown and then choose the IAM role **_LambdaInvokeSageMakerEndpointRole-endtoendml_** from the **Existing Role** dropdown. This will allow the function to invoke the Amazon SageMaker endpoint. Then press **Next**.
 	
