@@ -18,7 +18,7 @@ The process can be represented with the following diagram:
 
 After a model has been deployed, we might want to integrate it with our own application to provide insights to our end users.
 
-In this workshop we will go through the steps required to build a fully-fledged machine learning application on AWS. We will execute an iteration of the Machine Learning process to build, train and deploy a model using Amazon SageMaker and AWS Glue, and then we will add inference capabilities to a demo application deploying a REST API with Amazon API Gateway.
+In this workshop we will go through the steps required to build a fully-fledged machine learning application on AWS. We will execute an iteration of the Machine Learning process to build, train and deploy a model using Amazon SageMaker and AWS Glue, and then we will add inference capabilities to a demo application by deploying a REST API with Amazon API Gateway.
 
 The final architecture will be:
 
@@ -26,7 +26,23 @@ The final architecture will be:
 
 ## The Machine Learning task
 
-Bla bla bla
+We have been provided with a dataset (stored in an Amazon S3 bucket) containing data collected in a wind turbine plant, where each example includes several sensor measurements and a status indicating wheather the plant was healthy or not.
+
+> ⚠️ **Note**: this is a synthetic dataset that oversimplifies the task of doing Predictive Maintenance for the purpose of keeping this workshop easier to execute.
+
+Our goal is building a simple Machine Learning model that, given new sensor data, will predict whether the plant requires maintenance or not, allowing to execute maintenance before a breakdown event happens (<b>Predictive Maintenance</b>).
+
+Following is an excerpt from the dataset:
+
+|turbine\_id|turbine\_type|wind\_speed|rpm\_blade|oil\_temperature|...|breakdown|
+|-------|-------|-------|-------|-------|-------|-------|
+|TID003|HAWT|85|78|36.0|...|yes|
+|TID009|HAWT|80|25|37.0|...|no|
+|TID005|HAWT|36|32|40.0|...|no|
+
+Our target variable is the **breakdown** attribute, which is binary and suggests implementing a binary classification model.
+
+After building the model, we will have to host it and expose as a REST API for executing inferences from client-side applications.
 
 ## Modules
 
@@ -53,5 +69,5 @@ The contents of this workshop are licensed under the [Apache 2.0 License](./LICE
 
 ## Authors
 
-[Giuseppe Angelo Porcelli](https://it.linkedin.com/in/giuporcelli) - Principal, ML Specialist Solutions Architect - Amazon Web Services EMEA<br />
+[Giuseppe A. Porcelli](https://it.linkedin.com/in/giuporcelli) - Principal, ML Specialist Solutions Architect - Amazon Web Services EMEA<br />
 [Antonio Duma](https://it.linkedin.com/in/antoniod82) - Solutions Architect - Amazon Web Services EMEA
