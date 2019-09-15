@@ -13,13 +13,13 @@ In this section, we will walk you through creating a fully-managed Jupyter Noteb
 ## Create an Amazon S3 bucket
 In this section, we will create an Amazon S3 bucket that will be our storage area. Amazon SageMaker and AWS Glue can both use **Amazon S3** as the main storage for both data and artifacts.
 
-1. Sign into the **AWS Management Console** at <a href="https://console.aws.amazon.com/">https://console.aws.amazon.com/</a>
+1. Sign into the **AWS Management Console** using the link provided by the workshop instructors [or at <a href="https://console.aws.amazon.com/">https://console.aws.amazon.com/</a> if you are using your own AWS account].
 
-2. In the upper-right corner of the AWS Management Console, confirm you are in the desired AWS region. For the instructions of these workshop we will assume using the **US East (N. Virginia)** [us-east-1], but feel free to change the region at your convenience.
+2. In the upper-right corner of the AWS Management Console, confirm you are in the desired AWS region. For the instructions of these workshop we will assume using the **EU West (Ireland)** [eu-west-1], but feel free to change the region at your convenience.
 
 	> The only constraints for changing AWS region are that we keep consistent the region settings for all services used and services are available in the selected region (please check in case you plan to execute this workshop in another AWS region).
 
-3. Open the **Amazon S3** console at <a href="https://console.aws.amazon.com/s3">https://console.aws.amazon.com/s3</a> or choose the Amazon S3 service in the menu.
+3. Open the **Amazon S3** console by choosing the Amazon S3 service in the menu.
 4.	In the Amazon S3 console, click the **Create Bucket** button.
 	<img src="images/create_bucket.png" alt="create bucket" width="500px" />
 	
