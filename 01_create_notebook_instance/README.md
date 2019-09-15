@@ -13,7 +13,13 @@ In this section, we will walk you through creating a fully-managed Jupyter Noteb
 ## Create an Amazon S3 bucket
 In this section, we will create an Amazon S3 bucket that will be our storage area. Amazon SageMaker and AWS Glue can both use **Amazon S3** as the main storage for both data and artifacts.
 
-1. Sign into the **AWS Management Console** using the link provided by the workshop instructors [or at <a href="https://console.aws.amazon.com/">https://console.aws.amazon.com/</a> if you are using your own AWS account].
+1. Sign into the **AWS Management Console** using the Event Engine dashboard at <a href="https://dashboard.eventengine.run">https://dashboard.eventengine.run</a> and **the hashcode provided by the workshop instructors**. [Or access it at <a href="https://console.aws.amazon.com/">https://console.aws.amazon.com/</a> if you are using your own AWS account].
+
+	<img src="images/event_engine_login.png" alt="Event Engine login" width="500px" />
+	
+	<img src="images/event_engine_dashboard.png" alt="Event Engine dashboard" width="500px" />
+	
+	<img src="images/event_engine_console_login.png" alt="Event Engine console login" width="500px" />
 
 2. In the upper-right corner of the AWS Management Console, confirm you are in the desired AWS region. For the instructions of these workshop we will assume using the **EU West (Ireland)** [eu-west-1], but feel free to change the region at your convenience.
 
