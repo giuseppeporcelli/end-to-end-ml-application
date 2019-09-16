@@ -44,13 +44,13 @@ Once the environment is up and running please:
 7. Press **Finish**.
 8. Once clicked on **Finish** you _might_ get a pop up window asking for **Drag & drop files here**, in this case, please ignore it by click on **x** on the top right corner of the popup window.
 
-Now that we have created our Lambda function, we need to add the code to it. The files that we are going to edit are _lambda_function.py_ and _template.yaml_ that you can open using the file browser in the left side of the Cloud9 editor.
+Now that we have created our Lambda function, we need to add the code to it. The files that we are going to edit are _lambda\_function.py_ and _template.yaml_ that you can open using the file browser in the left side of the Cloud9 editor.
 
 <img src="images/cloud9_tree.png" alt="Cloud9 tree" width="700px" />
 
-### Edit _lambda_function.py_
+### Edit _lambda\_function.py_
 
-The file _lambda_function.py_ will contain the code that will process the content of the HTTP request of the API call and invoke the Amazon SageMaker endpoint.
+The file _lambda\_function.py_ will contain the code that will process the content of the HTTP request of the API call and invoke the Amazon SageMaker endpoint.
 
 Please **replace** the content of that file with the following snippet, making sure that the indentation is matching:
 
@@ -123,6 +123,11 @@ Please **add** the following lines to the _template.yaml_ file, after the _CodeU
 The additional statements are used to deploy an Amazon API Gateway REST API, which will accept POST and OPTIONS requests and pass the request content to the AWS Lambda function defined above.
 
 For additional information on this way of integrating AWS Lambda and Amazon API Gateway, please visit <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html">**AWS Lambda Proxy Integration**</a>.  
+
+### Save all changes
+After you have finished editing _lambda\_function.py_ and _template.yaml_, you have to save all changes by using the menu item **File > Save All**.
+
+<img src="images/cloud9_save_all.png" alt="Cloud9 Save All" width="300px" />
 
 ### Test locally
 
