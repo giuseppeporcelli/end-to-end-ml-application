@@ -68,7 +68,7 @@ model = pipeline.fit(df)
 df = model.transform(df)
 logger.info('Completed pipeline fit-transform.')
 
-logger.info('Fitting target indexer...')
+logger.info('Fitting target variable indexer...')
 label_indexer = StringIndexer(inputCol="breakdown", outputCol="indexed_breakdown")
 indexed_label_df = label_indexer.fit(df).transform(df)
 logger.info('Completed indexer fit-transform.')
@@ -80,20 +80,16 @@ logger.info('Random split completed.')
 
 logger.info('Save train file started...')
 # Convert the train dataframe to RDD to save in CSV format and upload to S3
-logger.info('RDD map started...')
 train_rdd = train_df.rdd.map(lambda x: (x.indexed_breakdown, x.features))
 train_lines = train_rdd.map(csv_line)
-logger.info('RDD map completed.')
-train_lines.repartition(15).saveAsTextFile('s3://{0}/data/preprocessed/train'.format(args['S3_BUCKET']))
+train_lines.saveAsTextFile('s3://{0}/data/preprocessed/train'.format(args['S3_BUCKET']))
 logger.info('Save train file completed.')
 
 logger.info('Save validation file started...')
 # Convert the validation dataframe to RDD to save in CSV format and upload to S3
-logger.info('RDD map started...')
 validation_rdd = validation_df.rdd.map(lambda x: (x.indexed_breakdown, x.features))
 validation_lines = validation_rdd.map(csv_line)
-logger.info('RDD map completed.')
-validation_lines.repartition(15).saveAsTextFile('s3://{0}/data/preprocessed/val'.format(args['S3_BUCKET']))
+validation_lines.saveAsTextFile('s3://{0}/data/preprocessed/val'.format(args['S3_BUCKET']))
 logger.info('Save validation file completed.')
 
 # Serialize and store the model via MLeap
