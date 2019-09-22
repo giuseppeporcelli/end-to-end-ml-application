@@ -13,7 +13,7 @@ The previous steps are generally repeated multiple times to better meet business
 
 The process can be represented with the following diagram:
 
-<img src="images/ml_process.png" alt="ML Process" width="700px" />
+<img src="images/ml_process.png" alt="ML Process" />
 
 
 After a model has been deployed, we might want to integrate it with our own application to provide insights to our end users.
@@ -22,7 +22,7 @@ In this workshop we will go through the steps required to build a fully-fledged 
 
 The final architecture will be:
 
-[insert architecture diagram]
+<img src="images/architecture.png" alt="ML Process" />
 
 ## The Machine Learning task
 
